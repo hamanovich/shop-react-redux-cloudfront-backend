@@ -8,20 +8,28 @@ provider:
   runtime: nodejs12.x
   memorySize: 256
   lambdaHashingVersion: 20201221
-
   stage: dev
   region: eu-central-1
 
+plugins:
+  - serverless-webpack
+
+custom:
+  webpack:
+    webpackConfig: "webpack.config.js"
+    includeModules: true
+    packager: "yarn"
+
 functions:
-  getProductsList:
-    handler: handlers/getProductsList.handler
+  getAllProducts:
+    handler: handler.getAllProducts
     events:
       - http:
           path: products
           method: GET
 
   getProductById:
-    handler: handlers/getProductById.handler
+    handler: handler.getProductById
     events:
       - http:
           path: products/{productId}

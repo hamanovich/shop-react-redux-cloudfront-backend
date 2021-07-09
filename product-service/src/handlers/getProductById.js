@@ -1,7 +1,7 @@
-const createError = require("http-errors");
-const commonMiddleware = require("../utils/middleware").default;
-const { getProductById } = require("../services/products");
-const { defaultHeaders } = require("../utils/api");
+import createError from "http-errors";
+import commonMiddleware from "../utils/middleware";
+import { getProductById } from "../services/products";
+import { defaultHeaders } from "../utils/api";
 
 async function getProduct(event) {
   try {
@@ -24,4 +24,4 @@ async function getProduct(event) {
   }
 }
 
-module.exports.handler = commonMiddleware(getProduct);
+export default commonMiddleware(getProduct);
