@@ -1,0 +1,17 @@
+{
+  "name": "product-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@middy/core": "^2.4.3",
+    "@middy/http-error-handler": "^2.4.3",
+    "@middy/http-event-normalizer": "^2.4.3",
+    "@middy/http-json-body-parser": "^2.4.3",
+    "http-errors": "^1.8.0"
+  }
+}

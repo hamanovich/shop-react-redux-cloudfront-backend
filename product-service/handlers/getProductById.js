@@ -1,13 +1,12 @@
+const createError = require("http-errors");
+const commonMiddleware = require("../utils/middleware").default;
 const { getProductById } = require("../services/products");
 const { defaultHeaders } = require("../utils/api");
 
-module.exports.handler = async (event, _context) => {
+async function getProduct(event) {
   try {
-    console.log("Get Product By Id", event.pathParameters, event);
     const { productId = "" } = event.pathParameters;
     const product = getProductById(productId);
-
-    console.log("Product", product);
 
     if (product) {
       return {
@@ -18,21 +17,11 @@ module.exports.handler = async (event, _context) => {
         body: JSON.stringify(product),
       };
     }
-    return {
-      statusCode: 404,
-      headers: {
-        ...defaultHeaders,
-      },
-      body: JSON.stringify("No product found!"),
-    };
-  } catch (err) {
-    console.error("Error", err);
-    return {
-      statueCode: 500,
-      headers: {
-        ...defaultHeaders,
-      },
-      body: JSON.stringify("Something went wrong!"),
-    };
+
+    throw new createError.NotFound(`Product with ID "${productId}" not found`);
+  } catch (error) {
+    throw new createError.InternalServerError(error);
   }
-};
+}
+
+module.exports.handler = commonMiddleware(getProduct);

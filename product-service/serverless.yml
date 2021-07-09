@@ -1,6 +1,5 @@
 service: product-service
 app: shop-react-redux-cloudfront-backend
-#org: hamanovich
 
 frameworkVersion: "2"
 
@@ -14,21 +13,12 @@ provider:
   region: eu-central-1
 
 functions:
-  hello:
-    handler: handlers/handler.hello
-    events:
-      - http:
-          path: hello
-          method: GET
-          # cors: true
-
   getProductsList:
     handler: handlers/getProductsList.handler
     events:
       - http:
           path: products
           method: GET
-          # cors: true
 
   getProductById:
     handler: handlers/getProductById.handler
@@ -40,4 +30,3 @@ functions:
             parameters:
               paths:
                 productId: true
-          # cors: true
