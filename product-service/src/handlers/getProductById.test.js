@@ -19,7 +19,9 @@ describe('Get one Dog', () => {
       },
     };
     try {
-      await getProductById(mockEvent);
+      const response = await getProductById(mockEvent);
+      expect(response.statusCode).toEqual(404);
+      expect(response.body).toBe('"Product with ID \\"X\\" not found"');
     } catch (e) {
       expect(e.status).toBe(500);
     }
