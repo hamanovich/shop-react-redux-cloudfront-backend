@@ -1,7 +1,7 @@
 import createError from 'http-errors';
 import commonMiddleware from '../utils/middleware';
 import { getProductById } from '../services/products';
-import { successResponse } from '../utils/api';
+import { successResponse, errorResponse } from '../utils/api';
 
 async function getProduct(event) {
   try {
@@ -12,7 +12,7 @@ async function getProduct(event) {
       return successResponse(product);
     }
 
-    throw new createError.NotFound(`Product with ID "${productId}" not found`);
+    return errorResponse(`Product with ID "${productId}" not found`, 404);
   } catch (error) {
     throw new createError.InternalServerError(error);
   }
