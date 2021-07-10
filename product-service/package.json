@@ -6,7 +6,8 @@
   "scripts": {
     "package:build": "sls package",
     "deploy:dev": "sls deploy --stage dev",
-    "deploy:prod": "sls deploy --stage prod"
+    "deploy:prod": "sls deploy --stage prod",
+    "format": "prettier \"**/*.+(js|jsx|json|yml|css|scss|ts|tsx|md)\" --write"
   },
   "author": "Siarhei Hamanovich",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "@babel/preset-env": "^7.14.7",
     "babel-loader": "^8.2.2",
     "babel-plugin-source-map-support": "^2.1.3",
+    "prettier": "^2.3.2",
     "serverless-webpack": "^5.5.1",
     "webpack": "^5.44.0",
     "webpack-node-externals": "^3.0.0"

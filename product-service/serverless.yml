@@ -1,7 +1,7 @@
 service: product-service
 app: shop-react-redux-cloudfront-backend
 
-frameworkVersion: "2"
+frameworkVersion: '2'
 
 provider:
   name: aws
@@ -16,13 +16,13 @@ plugins:
 
 custom:
   webpack:
-    webpackConfig: "webpack.config.js"
+    webpackConfig: 'webpack.config.js'
     includeModules: true
-    packager: "yarn"
+    packager: 'yarn'
 
 functions:
-  getAllProducts:
-    handler: handler.getAllProducts
+  getProductsList:
+    handler: handler.getProductsList
     events:
       - http:
           path: products

@@ -1,58 +1,66 @@
 [
   {
     "count": 4,
-    "description": "Short Product Description1",
+    "description": "Short Dog Description1",
     "id": "7567ec4b-b10c-48c5-9345-fc73c48a80aa",
     "price": 2.4,
-    "title": "Product 1"
+    "title": "Affenpinscher",
+    "imgUrl": "https://images.dog.ceo/breeds/affenpinscher/n02110627_11759.jpg"
   },
   {
     "count": 6,
-    "description": "Short Product Description3",
+    "description": "Short Dog Description3",
     "id": "7567ec4b-b10c-48c5-9345-fc73c48a80a0",
     "price": 10,
-    "title": "Product 2"
+    "title": "African",
+    "imgUrl": "https://images.dog.ceo/breeds/african/n02116738_4461.jpg"
   },
   {
     "count": 7,
-    "description": "Short Product Description2",
+    "description": "Short Dog Description2",
     "id": "7567ec4b-b10c-48c5-9345-fc73c48a80a2",
     "price": 23,
-    "title": "Product 3"
+    "title": "Airedale",
+    "imgUrl": "https://images.dog.ceo/breeds/airedale/n02096051_8385.jpg"
   },
   {
     "count": 12,
-    "description": "Short Product Description7",
+    "description": "Short Dog Description7",
     "id": "7567ec4b-b10c-48c5-9345-fc73c48a80a1",
     "price": 15,
-    "title": "Product 4"
+    "title": "Appenzeller",
+    "imgUrl": "https://images.dog.ceo/breeds/appenzeller/n02107908_7364.jpg"
   },
   {
     "count": 7,
-    "description": "Short Product Description2",
+    "description": "Short Dog Description2",
     "id": "7567ec4b-b10c-48c5-9345-fc73c48a80a3",
     "price": 23,
-    "title": "Product 5"
+    "title": "Borzoi",
+    "imgUrl": "https://images.dog.ceo/breeds/borzoi/n02090622_7135.jpg"
   },
   {
     "count": 8,
-    "description": "Short Product Description4",
+    "description": "Short Dog Description4",
     "id": "7567ec4b-b10c-48c5-9345-fc73348a80a1",
     "price": 15,
-    "title": "Product 6"
+    "title": "Beagle",
+    "imgUrl": "https://images.dog.ceo/breeds/beagle/n02088364_3758.jpg"
   },
   {
     "count": 2,
-    "description": "Short Product Descriptio1",
+    "description": "Short Dog Descriptio1",
     "id": "7567ec4b-b10c-48c5-9445-fc73c48a80a2",
     "price": 23,
-    "title": "Product 7"
+    "title": "Boxer",
+    "imgUrl": "https://images.dog.ceo/breeds/boxer/n02108089_5614.jpg"
   },
   {
     "count": 3,
-    "description": "Short Product Description7",
+    "description": "Short Dog Description7",
     "id": "7567ec4b-b10c-45c5-9345-fc73c48a80a1",
     "price": 15,
-    "title": "Product 8"
+    "title": "Chihuahua",
+    "imgUrl": "https://images.dog.ceo/breeds/chihuahua/n02085620_3407.jpg"
   }
 ]

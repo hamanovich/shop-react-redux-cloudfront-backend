@@ -1,16 +1,16 @@
-const path = require("path");
-const webpack = require("webpack");
-const slsw = require("serverless-webpack");
-const nodeExternals = require("webpack-node-externals");
+const path = require('path');
+const webpack = require('webpack');
+const slsw = require('serverless-webpack');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = (async () => {
   const accountId = await slsw.lib.serverless.providers.aws.getAccountId();
 
   return {
     context: __dirname,
-    mode: slsw.lib.webpack.isLocal ? "development" : "production",
+    mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
     entry: slsw.lib.entries,
-    target: "node",
+    target: 'node',
     plugins: [
       new webpack.DefinePlugin({
         AWS_ACCOUNT_ID: `${accountId}`,
@@ -24,9 +24,7 @@ module.exports = (async () => {
     performance: {
       hints: false,
     },
-    devtool: slsw.lib.webpack.isLocal
-      ? "cheap-module-eval-source-map"
-      : "source-map",
+    devtool: slsw.lib.webpack.isLocal ? 'cheap-module-eval-source-map' : 'source-map',
     module: {
       rules: [
         {
@@ -34,16 +32,16 @@ module.exports = (async () => {
           exclude: /node_modules/,
           use: [
             {
-              loader: "babel-loader",
+              loader: 'babel-loader',
             },
           ],
         },
       ],
     },
     output: {
-      libraryTarget: "commonjs",
-      path: path.join(__dirname, ".webpack"),
-      filename: "[name].js",
+      libraryTarget: 'commonjs',
+      path: path.join(__dirname, '.webpack'),
+      filename: '[name].js',
     },
   };
 })();
