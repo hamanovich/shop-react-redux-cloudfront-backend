@@ -27,6 +27,11 @@ module.exports = (async () => {
     devtool: slsw.lib.webpack.isLocal ? 'cheap-module-source-map' : 'source-map',
     module: {
       rules: [
+          {
+            test: /\.ya?ml$/,
+            type: 'json',
+            use: 'yaml-loader'
+          },
         {
           test: /\.js$/,
           exclude: /node_modules/,
