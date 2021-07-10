@@ -24,7 +24,7 @@ module.exports = (async () => {
     performance: {
       hints: false,
     },
-    devtool: slsw.lib.webpack.isLocal ? 'cheap-module-eval-source-map' : 'source-map',
+    devtool: slsw.lib.webpack.isLocal ? 'cheap-module-source-map' : 'source-map',
     module: {
       rules: [
         {
