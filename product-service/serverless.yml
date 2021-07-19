@@ -1,0 +1,48 @@
+service: product-service
+app: shop-react-redux-cloudfront-backend
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 256
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: eu-central-1
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules: true
+    packager: 'yarn'
+
+functions:
+  getAPI:
+    handler: handler.getAPI
+    events:
+      - http:
+          path: api
+          method: GET
+
+  getProductsList:
+    handler: handler.getProductsList
+    events:
+      - http:
+          path: products
+          method: GET
+
+  getProductById:
+    handler: handler.getProductById
+    events:
+      - http:
+          path: products/{productId}
+          method: GET
+          request:
+            parameters:
+              paths:
+                productId: true
