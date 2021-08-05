@@ -11,9 +11,12 @@ provider:
   stage: dev
   region: eu-central-1
 
+useDotenv: true
+
 plugins:
   - serverless-webpack
   - serverless-offline
+  - serverless-dotenv-plugin
 
 custom:
   webpack:
@@ -33,11 +36,29 @@ functions:
     handler: handler.getProductsList
     events:
       - http:
-          path: products
+          path: products/mock
           method: GET
 
   getProductById:
     handler: handler.getProductById
+    events:
+      - http:
+          path: products/mock/{productId}
+          method: GET
+          request:
+            parameters:
+              paths:
+                productId: true
+
+  getProductsFromDB:
+    handler: handler.getProductsFromDB
+    events:
+      - http:
+          path: products
+          method: GET
+
+  getProductFromDB:
+    handler: handler.getProductFromDB
     events:
       - http:
           path: products/{productId}
@@ -46,3 +67,10 @@ functions:
             parameters:
               paths:
                 productId: true
+
+  addProduct:
+    handler: handler.addProduct
+    events:
+      - http:
+          path: products
+          method: post
