@@ -19,11 +19,6 @@ module.exports = (async () => ({
   module: {
     rules: [
       {
-        test: /\.ya?ml$/,
-        type: 'json',
-        use: 'yaml-loader',
-      },
-      {
         test: /\.js$/,
         exclude: [
           [
