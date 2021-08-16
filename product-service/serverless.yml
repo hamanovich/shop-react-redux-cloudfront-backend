@@ -20,7 +20,7 @@ plugins:
 
 custom:
   webpack:
-    webpackConfig: 'webpack.config.js'
+    webpackConfig: webpack.config.js
     includeModules: true
     packager: 'yarn'
 
@@ -74,3 +74,8 @@ functions:
       - http:
           path: products
           method: post
+          cors: true
+      - http:
+          path: products
+          method: put
+          cors: true

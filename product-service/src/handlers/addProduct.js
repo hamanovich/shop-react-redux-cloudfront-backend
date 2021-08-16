@@ -5,13 +5,11 @@ import DB_CONFIG from '../db/config';
 import commonMiddleware from '../utils/middleware';
 import { validateBody } from '../utils/validation';
 
-async function addProduct(event) {
-  if (event.body) {
+async function addProduct({ body }) {
+  if (body) {
     const client = new Client(DB_CONFIG);
-    let body;
 
     try {
-      body = JSON.parse(event.body);
       validateBody(body);
     } catch (error) {
       throw new createError.InternalServerError(error);
