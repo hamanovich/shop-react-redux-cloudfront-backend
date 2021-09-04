@@ -1,0 +1,60 @@
+service: import-service
+app: shop-react-redux-cloudfront-backend
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 256
+  lambdaHashingVersion: 20201221
+  stage: dev
+  region: eu-central-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: s3:ListBucket
+          Resource:
+            - arn:aws:s3:::${env:IMPORT_BUCKET_NAME}
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource:
+            - arn:aws:s3:::${env:IMPORT_BUCKET_NAME}/*
+
+useDotenv: true
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  webpack:
+    webpackConfig: webpack.config.js
+    includeModules: true
+    packager: 'yarn'
+
+functions:
+  importProductsFile:
+    handler: handler.importProductsFile
+    events:
+      - http:
+          path: import
+          method: GET
+          cors: true
+          request:
+            parameters:
+              querystrings:
+                name: true
+
+  importFileParser:
+    handler: handler.importFileParser
+    events:
+      - s3:
+          bucket: ${env:IMPORT_BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: ${env:IMPORT_CATALOG_NAME}/
+          existing: true
