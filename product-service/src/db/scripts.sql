@@ -4,7 +4,7 @@ CREATE extension IF NOT EXISTS "uuid-ossp";
 
 CREATE TABLE products (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
-    title text UNQIUE NOT NULL,
+    title text UNIQUE NOT NULL,
     description text,
     price int,
     src text
