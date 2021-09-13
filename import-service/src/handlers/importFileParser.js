@@ -10,8 +10,6 @@ const importFileParser = async (event) => {
   const sqs = new AWS.SQS();
   const FILE_NAME = event.Records[0].s3.object.key;
 
-  console.log('IMPORT EVENT', FILE_NAME, event.Records[0].s3);
-
   const params = {
     Bucket: IMPORT_BUCKET_NAME,
     Key: FILE_NAME,

@@ -18,8 +18,3 @@ const DB_OPTIONS = {
 };
 
 export const createClient = () => new Client(DB_OPTIONS);
-
-export const connectToDB = async () => {
-  const dbClient = createClient();
-  await dbClient.connect();
-};

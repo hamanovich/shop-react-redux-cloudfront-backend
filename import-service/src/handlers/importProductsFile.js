@@ -1,15 +1,13 @@
 import * as AWS from 'aws-sdk';
 import dotenv from 'dotenv';
 import commonMiddleware from '../utils/middleware';
-import { successResponse, errorResponse, logRequest } from '../utils/api';
+import { successResponse, errorResponse } from '../utils/api';
 
 dotenv.config();
 
 const { IMPORT_BUCKET_NAME, IMPORT_CATALOG_NAME } = process.env;
 
 const importProductsFile = async (event) => {
-  logRequest(event);
-
   try {
     const s3 = new AWS.S3({ signatureVersion: 'v4' });
     const params = {
