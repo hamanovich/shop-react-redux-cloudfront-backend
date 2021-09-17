@@ -27,8 +27,8 @@ provider:
             - s3:*
           Resource:
             - arn:aws:s3:::${env:IMPORT_BUCKET_NAME}/*
-        - Effect: "Allow"
-          Action: "sqs:*"
+        - Effect: Allow
+          Action: 'sqs:*'
           Resource:
             Fn::GetAtt:
               - ${env:SQS_QUEUE_NAME}
@@ -52,7 +52,7 @@ custom:
   webpack:
     webpackConfig: webpack.config.js
     includeModules: true
-    packager: 'yarn'
+    packager: yarn
 
 functions:
   importProductsFile:
@@ -66,6 +66,12 @@ functions:
             parameters:
               querystrings:
                 name: true
+          authorizer:
+            name: basicAuthorizer
+            arn: !Sub arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:authorization-service-dev-basicAuthorizer
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization
+            type: token
 
   importFileParser:
     handler: handler.importFileParser

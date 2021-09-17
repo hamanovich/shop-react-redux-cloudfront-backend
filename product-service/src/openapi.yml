@@ -1,8 +1,8 @@
-openapi: "3.0.3"
+openapi: '3.0.3'
 info:
   title: product-service
   description: Product service for getting dogs and breeds
-  version: "1.0"
+  version: '1.0'
 
 servers:
   - url: https://j7cuan16ei.execute-api.eu-central-1.amazonaws.com/dev
@@ -15,16 +15,16 @@ paths:
       description: Returns a list of products
       responses:
         200:
-          description: "OK"
+          description: 'OK'
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Product"
+                  $ref: '#/components/schemas/Product'
         500:
-          description: "Internal Server Error"
-          
+          description: 'Internal Server Error'
+
   /products/{productId}:
     get:
       summary: Product by ID
@@ -35,21 +35,21 @@ paths:
           required: true
           description: Id of product
           schema:
-            type : string
+            type: string
             format: string
             minimum: 1
           example: 7567ec4b-b10c-48c5-9345-fc73c48a80aa
       responses:
         200:
-          description: "OK"
+          description: 'OK'
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Product"
+                $ref: '#/components/schemas/Product'
         404:
-          description: "Product with ID not found"
+          description: 'Product with ID not found'
         500:
-          description: "Internal Server Error"
+          description: 'Internal Server Error'
 
 components:
   schemas:

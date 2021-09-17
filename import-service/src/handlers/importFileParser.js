@@ -1,5 +1,7 @@
+import 'source-map-support/register';
 import csv from 'csv-parser';
 import * as AWS from 'aws-sdk';
+import logger from '../libs/logger';
 import commonMiddleware from '../utils/middleware';
 import { errorResponse } from '../utils/api';
 
@@ -45,9 +47,9 @@ const importFileParser = async (event) => {
             },
             (err, data) => {
               if (err) {
-                console.error(`Sending error: ${JSON.stringify(err)}`);
+                logger.error(`Sending error: ${JSON.stringify(err)}`);
               } else {
-                console.log(`New product is sent to the queue: ${JSON.stringify(data)}`);
+                logger.info(`New product is sent to the queue: ${JSON.stringify(data)}`);
               }
             },
           );

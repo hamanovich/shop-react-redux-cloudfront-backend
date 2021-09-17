@@ -1,8 +1,8 @@
 {
-  "name": "product-service",
+  "name": "authorization-service",
   "version": "1.0.0",
-  "description": "Product service for API Gateway",
   "main": "handler.js",
+  "description": "Authorization service for API Gateway",
   "scripts": {
     "package:build": "sls package",
     "deploy:dev": "sls deploy --stage dev",
@@ -22,7 +22,6 @@
     "aws-sdk": "^2.983.0",
     "dotenv": "^10.0.0",
     "http-errors": "^1.8.0",
-    "pg": "^8.7.1",
     "source-map-support": "^0.5.19",
     "winston": "^3.3.3"
   },
@@ -39,7 +38,6 @@
     "serverless-offline": "^7.0.0",
     "serverless-webpack": "^5.5.1",
     "webpack": "^5.44.0",
-    "webpack-node-externals": "^3.0.0",
-    "yaml-loader": "^0.6.0"
+    "webpack-node-externals": "^3.0.0"
   }
 }
