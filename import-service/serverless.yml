@@ -10,6 +10,11 @@ provider:
   lambdaHashingVersion: 20201221
   stage: dev
   region: eu-central-1
+
+  environment:
+    CREATE_PRODUCT_SQS_URL:
+      Ref: ${env:SQS_QUEUE_NAME}
+
   iam:
     role:
       statements:
@@ -22,6 +27,19 @@ provider:
             - s3:*
           Resource:
             - arn:aws:s3:::${env:IMPORT_BUCKET_NAME}/*
+        - Effect: "Allow"
+          Action: "sqs:*"
+          Resource:
+            Fn::GetAtt:
+              - ${env:SQS_QUEUE_NAME}
+              - Arn
+
+resources:
+  Resources:
+    SQSQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${env:SQS_NAME}
 
 useDotenv: true
 

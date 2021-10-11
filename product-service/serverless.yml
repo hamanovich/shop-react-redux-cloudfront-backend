@@ -1,7 +1,7 @@
 service: product-service
 app: shop-react-redux-cloudfront-backend
 
-frameworkVersion: '2'
+frameworkVersion: "2"
 
 provider:
   name: aws
@@ -11,7 +11,47 @@ provider:
   stage: dev
   region: eu-central-1
 
+  environment:
+    SQS_URL: Ref ${env:SQS_URL}
+    SNS_TOPIC: !Ref ${env:SNS_TOPIC}
+
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action: "sns:*"
+          Resource: "*"
+
+
 useDotenv: true
+
+resources:
+  Resources:
+    SNSTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: createProductTopicDev
+    SNSCheapProduct:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Endpoint: ${env:EMAIL_DEV}
+        Protocol: email
+        TopicArn:
+          Ref: SNSTopic
+        FilterPolicy:
+          isExpensive:
+            - "false"
+    SNSExpensiveProduct:
+      Type: AWS::SNS::Subscription
+      Properties:
+        Endpoint: ${env:EMAIL_MAIN}
+        Protocol: email
+        TopicArn:
+          Ref: SNSTopic
+        FilterPolicy:
+          isExpensive:
+            - "true"
+    
 
 plugins:
   - serverless-webpack
@@ -22,7 +62,7 @@ custom:
   webpack:
     webpackConfig: webpack.config.js
     includeModules: true
-    packager: 'yarn'
+    packager: "yarn"
 
 functions:
   getAPI:
@@ -79,3 +119,10 @@ functions:
           path: products
           method: put
           cors: true
+
+  catalogBatchProcess:
+    handler: handler.catalogBatchProcess
+    events:
+      - sqs:
+          batchSize: 5
+          arn: ${env:SQS_ARN}

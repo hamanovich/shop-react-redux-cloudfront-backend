@@ -8,11 +8,11 @@ export const validatePrice = (price) => {
   if (isNaN(price)) throw new createError.Conflict('price');
 };
 export const validateTitle = (title) => {
-  if (typeof title !== 'string' || title.length > 20) throw new createError.Conflict('title');
+  if (typeof title !== 'string') throw new createError.Conflict(`title: ${title}`);
 };
 
 export const validateDescription = (description) => {
-  if (typeof description !== 'string' || description.length > 50) throw new createError.Conflict('description');
+  if (typeof description !== 'string') throw new createError.Conflict('description');
 };
 
 export const validateSrc = (src) => {
