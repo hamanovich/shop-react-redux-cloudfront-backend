@@ -1,3 +1,4 @@
+import 'source-map-support/register';
 import createError from 'http-errors';
 import commonMiddleware from '../utils/middleware';
 import { getProducts } from '../services/products';

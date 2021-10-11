@@ -1,7 +1,7 @@
 service: product-service
 app: shop-react-redux-cloudfront-backend
 
-frameworkVersion: "2"
+frameworkVersion: '2'
 
 provider:
   name: aws
@@ -18,10 +18,9 @@ provider:
   iam:
     role:
       statements:
-        - Effect: "Allow"
-          Action: "sns:*"
-          Resource: "*"
-
+        - Effect: Allow
+          Action: sns:*
+          Resource: '*'
 
 useDotenv: true
 
@@ -40,7 +39,7 @@ resources:
           Ref: SNSTopic
         FilterPolicy:
           isExpensive:
-            - "false"
+            - 'false'
     SNSExpensiveProduct:
       Type: AWS::SNS::Subscription
       Properties:
@@ -50,8 +49,7 @@ resources:
           Ref: SNSTopic
         FilterPolicy:
           isExpensive:
-            - "true"
-    
+            - 'true'
 
 plugins:
   - serverless-webpack
@@ -62,7 +60,7 @@ custom:
   webpack:
     webpackConfig: webpack.config.js
     includeModules: true
-    packager: "yarn"
+    packager: yarn
 
 functions:
   getAPI:
