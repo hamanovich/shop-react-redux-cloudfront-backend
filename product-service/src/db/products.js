@@ -2,7 +2,7 @@ import createError from 'http-errors';
 import { createClient } from './config';
 import { errorResponse } from '../utils/api';
 
-export const getProductFromDB = async () => {
+export const getProductFromDB = async (event) => {
   const dbClient = createClient();
   await dbClient.connect();
 
