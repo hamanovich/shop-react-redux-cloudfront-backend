@@ -1,0 +1,16 @@
+{
+  "name": "bff-service",
+  "version": "0.0.1",
+  "main": "app.js",
+  "license": "ISC",
+  "type": "module",
+  "private": "true",
+  "scripts": {
+    "start": "node app.js",
+    "deploy": "eb deploy bff-service-dev"
+  },
+  "dependencies": {
+    "axios": "^0.23.0",
+    "express": "^4.17.1"
+  }
+}
